@@ -1,0 +1,4 @@
+FROM eclipse-temurin:17-jre-jammy as production   
+EXPOSE 8000
+COPY /target/StoreWala-0.0.1-SNAPSHOT.jar StoreWala-0.0.1-SNAPSHOT.jar
+CMD ["java", "-jar", "/StoreWala-0.0.1-SNAPSHOT.jar"] 

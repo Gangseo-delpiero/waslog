@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event Page</title>
+</head>
+<body>
+
+    <!-- Home Button -->
+    <a href="/home" class="navbar-brand"> <img class="ml-minus40"
+        height="70" src="/images/logo1.png">
+    </a>
+
+    <!-- Content -->
+    <div class="content">
+      <div class="concert-info">
+        <p>Date: 2023-11-30</p>
+        <p>Venue: Concert Venue</p>
+        <p>Artist: Artist Name</p>
+      </div>
+
+      <!-- 이미지 추가 -->
+      <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMTEyMDhfMTU2%2FMDAxNjM4OTIyMTM2Njk0.PIeML59Kb8h-_MfxF4QpedMpfsf2dh_2AX5O90HD4Dcg.H5VKlR0pSE_DvBaACG_1w0yn1zlG_MQB_CjXNt1Ugrkg.JPEG.tkfkd1k%2FKBS%25A3%25DF%25BC%25BC%25B7%25CE10.jpg&type=a340" height="850" width="650" alt="Event Image">
+
+      <!-- 남은 시간 표시와 구매 버튼 -->
+    <div style="display:flex; align-items:center;">
+      <p id="countdown"></p>&nbsp;&nbsp;&nbsp;
+      <button id="purchaseButton" class="btn btn-warning" onclick="window.location.href='http://event.1a2a3a4a5a.store'" disabled>구매</button>
+    </div>
+
+
+   </div>
+
+   <!-- JavaScript 코드 -->
+	<script language='JavaScript'>
+		var SetTime = 6;
+
+		function msg_time() { 
+			m = Math.floor(SetTime / 60) + "분 " + (SetTime % 60) + "초"; 
+
+			var msg = "다음 구매 가능까지 남은 시간 :<font color='red'>" + m + "</font>";
+			
+			document.getElementById('countdown').innerHTML = msg;
+
+			SetTime--; 
+
+			if (SetTime <= -1) { 
+				clearInterval(tid); 
+				document.getElementById('purchaseButton').disabled = false;
+				SetTime = -1;
+                document.getElementById('countdown').innerHTML = "다음 구매 가능까지 남은 시간: <font color='red'>0분 0초</font>";
+			} else {
+				document.getElementById('purchaseButton').disabled = true;
+                if(SetTime == -1){
+                    document.getElementById('countdown').innerHTML = "다음 구매 가능까지 남은 시간: <font color='red'>0분 0초</font>";
+                }
+            }
+			
+		}
+
+	window.onload = function TimerStart(){ tid=setInterval('msg_time()',1000) };
+		
+	</script>
+
+</body>
+</html>
